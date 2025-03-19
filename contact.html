@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopSwift-Contact Us</title>
+   <script defer src="script.js"></script>  
+   <style>
+ body{
+    background-color: black;
+    background-color:#000000;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
+
+ 
+header {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  background: #073c5a;
+  color: white;
+  padding: 20px 30px;
+  height: 45px;
+}
+/* .header-icon{
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+   margin-top: -10px;
+    border-radius: 50%;
+     margin-right: -250px;
+    fill: white;
+} */
+.logo a {
+  font-size: 32px;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.nav-links {
+  gap: 5px;
+  font-weight: 600;
+  font-size: 21px;
+  margin-left: 10%;
+  list-style: none;
+  display: flex; 
+  
+}
+.nav-links li {
+  position: relative;
+}
+.nav-links a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding:5px 15px;
+  display: block;
+  transition: 0.3s ease-in-out;
+}
+.nav-links a:hover {
+  background: #949494;
+  border-radius: 5px;
+}
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+#logout-btn{
+    background-color: #0087d4; 
+    color: white;
+    border: none;
+    padding: 0.6rem 2.5rem;
+    font-size: 1.525rem;
+    border-radius: 0.575rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out; 
+    margin-top: 3px; 
+}
+#logout-btn:hover {
+    background-color: #3830d6; 
+}
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+@media (max-width: 768px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 56px;
+    left: -43px;
+    width:30%;
+    background: #073c5a;
+    text-align: center;
+    padding: 10px 0;
+    gap: 10px;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-links a {
+    display: block;
+    padding: 10px;
+    color: white;
+  }
+}
+.nav-icons {
+    display: flex;
+    align-items: center;
+}
+.nav-icons a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    margin-right: 15px; 
+}
+.nav-icons a:last-child {
+    margin-right: 0; 
+}
+.nav-icons svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+.nav-icons a:hover svg {
+    transform: scale(1.1); 
+    color: red;
+}
+ .contact-form-container {
+  width: 400px;
+  height: 570px;
+  margin: 35px 130px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 20 20px 5px rgb(255, 253, 253);
+  border-radius: 10px;
+}
+.section-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    color:#f1e205;
+    text-align: center;
+}
+
+.form-group {
+  margin-bottom: 30px;
+  width: 95%;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: bold;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #000000fa;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+textarea {
+  resize: none;
+  height: 120px;
+}
+
+.buttontwo {
+  display: block;
+  width: 40%;
+  padding: 7px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 26px;
+  cursor: pointer;
+  margin-top: -15px;
+  margin-left: 120px;
+  transition: background-color 0.3s ease;
+}
+
+.buttontwo:hover {
+  background-color: #0056b3;
+}
+#imgContact{
+  position: absolute;
+  top: 180px;
+  left: 650px;
+min-width: 90px;
+  
+}
+@media (max-width: 786px) {
+  #imgContact{
+     position: relative;
+     top: 60px;
+     left: -50px;
+  min-width: 200px;
+  } 
+  }
+/* Media Query for devices with width of 486px or below */
+@media (max-width: 786px) {
+  .contact-form-container {
+    max-width: 90%;
+    margin-bottom: 12px;
+    margin: 20px auto;
+    padding: 30px;
+
+  }
+}
+
+   </style>
+</head>
+<body>
+    <header>
+        <button class="menu-toggle">&#9776;</button> 
+         <div class="logo">
+          <a href="#">ShopSwift</a>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="products.html">Home</a></li>
+            <li><a href="productPagetwo.html">Product</a></li>
+            <li><a href="contact.html">Contact</a></li>  
+        </nav>
+        <div class="nav-icons">
+            <a href="favorites.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg> Favorites
+            </a>
+            <a href="cart.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM7.16 14h9.69c.88 0 1.66-.58 1.93-1.42l3.24-9.49c.18-.53.09-1.12-.24-1.58A1.98 1.98 0 0019.5 1H5.21L4.27.34A1 1 0 003 0H1v2h2l3.6 7.59-1.35 2.44C4.52 13.11 5.48 14 6.65 14z"/>
+                </svg> Cart
+            </a>
+        </div>           
+      </ul>
+      </header>
+        <div>
+        </div>
+      </header>
+
+    
+        <!-- ✅ Contact Section -->
+        <div class="contact-form-container">
+            <form id="contact-form">
+                <h1 class="section-title">Contact Us</h1>
+    
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+    
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+    
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                </div>
+    
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required placeholder="Enter your address">
+                </div>
+    
+                <button class="buttontwo" type="submit">Submit</button>
+            </form>
+    
+            <div id="imgContact">
+                <img src="https://static.wixstatic.com/media/11d640_593b61543f574bb1969002943b99bac1~mv2.png/v1/fill/w_513,h_470,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/bulk-sms.png" alt="Contact Us">
+            </div>
+        </div>
+    
+ 
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopSwift-Product Details</title>
+    <link rel="stylesheet" href="">
+    <style>
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #000000;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+header {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  background: #073c5a;
+  color: white;
+  padding: 20px 30px;
+  height: 45px;
+}
+/* .header-icon{
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+   margin-top: -10px;
+    border-radius: 50%;
+     margin-right: -250px;
+    fill: white;
+} */
+.logo a {
+  font-size: 32px;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  
+}
+
+.nav-links {
+  gap: 5px;
+  font-weight: 600;
+  font-size: 21px;
+  margin-left: 10%;
+  list-style: none;
+  display: flex; 
+}
+.nav-links li {
+  position: relative;
+}
+.nav-links a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding:5px 15px;
+  display: block;
+  transition: 0.3s ease-in-out;
+}
+.nav-links a:hover {
+  background: #949494;
+  border-radius: 5px;
+}
+
+#logout-btn{
+    background-color: #0087d4; 
+    color: white;
+    border: none;
+    padding: 0.6rem 2.5rem;
+    font-size: 1.525rem;
+    border-radius: 0.575rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out; 
+    margin-top: 3px; 
+}
+#logout-btn:hover {
+    background-color: #3830d6; 
+}
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+@media (max-width: 768px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+  }
+ 
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 58px;
+    left: 2px;
+    width:30%;
+    background: #073c5a;
+    text-align: center;
+    padding: 10px 0;
+    gap: 10px;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-links a {
+    display: block;
+    padding: 10px;
+    color: white;
+  }
+}
+/* Navigation Icons */
+.nav-icon {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: -330px;
+}
+
+/* Nav Icon Links */
+.nav-icon a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    margin-right: 15px;
+}
+
+/* Remove margin from last icon */
+.nav-icon a:last-child {
+    margin-right: 0px;
+}
+
+/* SVG Icons */
+.nav-icon svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.nav-icon a:hover svg {
+    transform: scale(1.1);
+    color: red;
+}
+
+/* 📱 Responsive for Mobile */
+@media (max-width: 768px) {
+    .nav-icon {
+        margin-right: 0; /* Remove negative margin */
+        gap: 10px; /* Add spacing */
+        justify-content: flex-end; /* Align to the right */
+    }
+
+    .nav-icon a {
+        font-size: 14px; /* Reduce font size */
+        margin-right: 10px;
+    }
+
+    .nav-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* 📱 Even Smaller Screens (Max 480px) */
+@media (max-width: 480px) {
+    .nav-icon {
+        gap: 5px;
+    }
+
+    .nav-icon a {
+        font-size: 12px;
+        margin-right: 5px;
+    }
+
+    .nav-icon svg {
+        width: 16px;
+        height: 16px;
+        margin-right: 3px;
+    }
+}
+/* Default - Hide the menu toggle on larger screens */
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show the menu button */
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #073c5a;
+        text-align: center;
+        padding: 10px 0;
+        gap: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show menu when active */
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 12px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .nav-links a:hover {
+        background: #005f89;
+    }
+}
+
+.product-detail {
+    padding: 40px 20px;
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+.product-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+}
+.product-info {
+    flex: 1;
+    max-width: 50%;
+}
+.product-category {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #ccc;
+}
+.product-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+.tabs {
+    display: flex;
+    margin: 20px 0;
+    border-bottom: 2px solid #333;
+}
+
+.tabs a {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #ccc;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.tabs a.active, .tabs a:hover {
+    border-bottom: 2px solid #6c63ff;
+    color: #6c63ff;
+}
+
+
+.product-description {
+    font-size: 16px;
+    color: #a0aec0;
+    margin-bottom: 20px;
+}
+
+
+.product-attributes {
+    border-top: 1px solid #444;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.attribute {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #444;
+}
+
+
+.product-actions {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.product-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fcd535;
+}
+
+.btn {
+    background-color: #3971bb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-left: 30px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #4a3dff;
+}
+.product-image {
+    flex: 1;
+    max-width: 40%;
+    width: 400px;
+    height: auto;
+    object-fit: cover;
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .product-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .product-info, .product-image {
+        max-width: 100%;
+    }
+
+    .product-actions {
+        justify-content: center;
+    }
+}
+.favorite-btn{
+  width: 50px;
+  height: 50px;
+  margin-left: 80%;
+  color: red;
+    display: inline-block;
+    animation: float 2s infinite ease-in-out;
+}
+
+/* ✅ Floating Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+    @media screen and (max-width: 768px) {
+        .favorite-btn{
+            margin-left: 70%;
+            font-size: 40px;
+        }
+        
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="menu-toggle">&#9776;</button> 
+         <div class="logo">
+          <a href="#">ShopSwift</a>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="products.html">Home</a></li>
+            <li><a href="productPagetwo.html">Product</a></li>
+            <li><a href="contact.html">Contact</a></li>  
+        </nav>
+        <div class="nav-icon">
+            <a href="favorites.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg> Favorites
+            </a>
+            <a href="cart.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM7.16 14h9.69c.88 0 1.66-.58 1.93-1.42l3.24-9.49c.18-.53.09-1.12-.24-1.58A1.98 1.98 0 0019.5 1H5.21L4.27.34A1 1 0 003 0H1v2h2l3.6 7.59-1.35 2.44C4.52 13.11 5.48 14 6.65 14z"/>
+                </svg> Cart
+            </a>
+        </div>           
+      </ul>
+  
+        <div>
+        </div>
+      </header>
+  <br/<br/><br/><br/><br/>
+     <section class="product-detail" id="ProductDetail">
+        <div class="container">
+            <div class="product-wrapper">       
+                <div class="product-info">
+                    <h2 class="product-category" id="category">Loading...</h2>
+                    <h1 class="product-title" id="title">Loading...</h1>              
+                    <div class="tabs">
+                        <a class="active">Description</a>
+                        <a>Reviews</a>
+                        <a>Details</a>
+                    </div>
+                    <p class="product-description" id="description">Loading product details...</p>
+                    <div class="product-attributes">
+                        <div class="attribute"><span>Color:</span> <span class="value" id="color">Black</span></div>
+                        <div class="attribute"><span>Size:</span> <span class="value" id="size">Medium</span></div>
+                        <div class="attribute"><span>Quantity:</span> <span class="value" id="quantity">4</span></div>
+                    </div>      
+                    <div class="product-actions">
+                        <span class="product-price" id="price">Loading...</span>
+                       <div class=" favorite-btn" >
+                        <svg
+                        fill="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        className="w-8 h-8 "
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                      </svg>
+                      </div>
+                    </div>
+                </div>
+                <img id="product-image" class="product-image" src="placeholder.jpg" alt="Product Image">
+            </div>
+        </div>
+    </section>
+
+
+    <script src="product-details.js"></script>
+</body>
+</html>

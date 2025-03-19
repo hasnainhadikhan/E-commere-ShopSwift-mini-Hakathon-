@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites</title>
+   <style>
+      body{
+        margin: 0;
+        padding: auto;
+  background-color:#000000;
+  font-family: "Poppins", sans-serif;
+ 
+}
+header {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  background: #073c5a;
+  color: white;
+  padding: 20px 30px;
+  height: 45px;
+}
+/* .header-icon{
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+   margin-top: -10px;
+    border-radius: 50%;
+     margin-right: -250px;
+    fill: white;
+} */
+.logo a {
+  font-size: 32px;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+
+ 
+}
+.nav-links {
+  gap: 5px;
+  font-weight: 600;
+  font-size: 21px;
+margin-left: -120%;
+  list-style: none;
+  display: flex;
+}
+.nav-links li {
+  position: relative;
+}
+.nav-links a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding: 5px 15px;
+  display: block;
+  
+  transition: 0.3s ease-in-out;
+}
+.nav-links a:hover {
+  background: #949494;
+  border-radius: 5px;
+}
+.menu-toggle {
+  background: none;
+  border: none;
+  margin-left: -3%;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+@media (max-width: 1024px) {
+  .nav-links {
+    margin-left: 0; 
+  }
+}
+@media (max-width: 768px) {
+  .logo a{
+    margin-left: -55%;
+  }
+  .menu-toggle {
+    display: block; 
+  }
+  .nav-links {
+    display: none; 
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #073c5a;
+    text-align: center;
+    padding: 0px 0;
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-links a {
+    display: block;
+    padding: 12px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .nav-links a:hover {
+    background: #005f89;
+  }
+}
+@media (max-width: 480px) {
+  .nav-links a {
+    font-size: 16px; 
+    padding: 10px;
+  }
+  .menu-toggle {
+    font-size: 22px; 
+  }
+}
+.cart-section {
+    text-align: center;
+    padding: 50px 20px;
+
+}
+.section-title {
+    font-size: 60px;
+    font-weight: bold;
+    color:#fcd535;
+    text-align: center;
+}
+.favorites-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+#favorites-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.favorite-item {
+    background: linear-gradient(135deg, #2d2d2d, #1e1e1e); 
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* ✅ Hover Effect */
+.favorite-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 25px rgba(255, 182, 193, 0.2); /* Light pink glow */
+}
+
+/* ✅ Favorite Image */
+.favorite-item img {
+  width: 100%;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;}
+
+/* ✅ Image Hover Effect */
+.favorite-item:hover img {
+    transform: scale(1.1);
+}
+
+/* ✅ Product Title */
+.favorite-item h3 {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ff4081; /* Pink for Favorites */
+}
+
+/* ✅ Price */
+.favorite-item p {
+    font-size: 24px;
+    font-weight: bold;
+    color:#fcd535;
+    text-align: center;
+    
+}
+
+/* ✅ Move to Cart Button */
+.move-to-cart {
+    background: linear-gradient(135deg, #42a5f5, #1976d2); /* Blue Gradient */
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* ✅ Hover Effect */
+.move-to-cart:hover {
+    background: linear-gradient(135deg, #1976d2, #42a5f5);
+    transform: scale(1.1);
+}
+
+/* ✅ Remove from Favorites Button */
+.remove-favorite {
+    background: linear-gradient(135deg, #ff4e50, #ff9a9e);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+
+.remove-favorite:hover {
+    background: linear-gradient(135deg, #ff9a9e, #ff4e50);
+    transform: scale(1.1);
+}
+
+
+#clear-favorites {
+    background: linear-gradient(135deg, #6200ea, #9c27b0); /* Purple Gradient */
+    border: none;
+    color: white;
+    padding: 12px 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* ✅ Hover Effect */
+#clear-favorites:hover {
+    background: linear-gradient(135deg, #9c27b0, #6200ea);
+    transform: scale(1.1);
+}
+
+/* ✅ Responsive Design */
+@media (max-width: 768px) {
+    .favorite-item {
+        width: 90%;
+    }
+}
+
+   </style>
+</head>
+<body>
+  <header>
+    <button class="menu-toggle">&#9776;</button> 
+     <div class="logo">
+      <a href="#">ShopSwift</a>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="products.html">Home</a></li>
+        <li><a href="productPagetwo.html">Product</a></li>
+        <li><a href="contact.html">Contact</a></li>  
+    </nav>
+            
+  </ul>
+  </header>
+    <div>
+    </div>
+  </header>
+    <h1  class="section-title">Your Favorite Products ❤️</h1>
+    <div id="favorites-container"></div>
+
+    <script src="favorites.js"></script>
+
+</body>
+</html>
